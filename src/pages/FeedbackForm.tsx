@@ -46,7 +46,7 @@ const FeedbackForm = () => {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="flex flex-col items-center text-center mb-8">
-          <HotelLogo className="w-60 mb-6" />
+          <HotelLogo className="w-72 mb-8" />
           
           <div className="flex items-center justify-center space-x-1 mb-6">
             {[1, 2, 3, 4, 5].map((star) => (
@@ -128,7 +128,7 @@ const FeedbackForm = () => {
             <button 
               type="submit" 
               disabled={isSubmitting}
-              className="submit-button w-full"
+              className="submit-button w-full group"
             >
               <span className="submit-button-inner">
                 <Check className="mr-2" />

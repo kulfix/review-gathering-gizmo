@@ -53,7 +53,7 @@ const Index = () => {
           className="flex flex-col items-center text-center"
           animate={isAnimating ? { opacity: 0, y: -20 } : { opacity: 1, y: 0 }}
         >
-          <HotelLogo className="w-72 mb-8" />
+          <HotelLogo className="w-80 mb-10" />
           
           <motion.div
             initial={{ opacity: 0 }}

@@ -21,7 +21,7 @@ const ThankYou = () => {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="flex flex-col items-center">
-          <HotelLogo className="w-60 mb-8" />
+          <HotelLogo className="w-72 mb-10" />
           
           <motion.div
             initial={{ scale: 0.5, opacity: 0 }}

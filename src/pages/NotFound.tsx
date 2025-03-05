@@ -24,7 +24,7 @@ const NotFound = () => {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="flex flex-col items-center">
-          <HotelLogo className="w-60 mb-8" />
+          <HotelLogo className="w-72 mb-10" />
           
           <h1 className="text-6xl font-bold text-hotel-blue mb-4">404</h1>
           <p className="text-xl text-gray-600 mb-8">Strona nie została znaleziona</p>
