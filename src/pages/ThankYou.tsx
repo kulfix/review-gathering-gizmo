@@ -1,11 +1,14 @@
 
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
-import { Link } from "react-router-dom";
+import { CheckCircle, Star } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import HotelLogo from "@/components/HotelLogo";
 
 const ThankYou = () => {
+  const location = useLocation();
+  const formData = location.state?.formData || null;
+  
   useEffect(() => {
     // Scroll to top on page load
     window.scrollTo(0, 0);
@@ -50,15 +53,52 @@ const ThankYou = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className="text-lg text-gray-600 mb-10"
+            className="text-lg text-gray-600 mb-8"
           >
             Twoja opinia jest dla nas bardzo ważna i pomoże nam poprawić jakość naszych usług.
           </motion.p>
           
+          {formData && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+              className="w-full max-w-md mb-8 bg-gray-50 p-6 rounded-lg border border-gray-100"
+            >
+              <h3 className="text-lg font-medium text-gray-700 mb-4 text-left">Informacje z formularza:</h3>
+              
+              <div className="space-y-2 text-left">
+                <div className="flex items-center mb-3">
+                  <div className="flex">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star 
+                        key={star}
+                        size={20} 
+                        className={`${star <= formData.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`}
+                      />
+                    ))}
+                  </div>
+                  <span className="ml-2 text-gray-600">{formData.rating} {formData.rating === 1 ? 'gwiazdka' : formData.rating < 5 ? 'gwiazdki' : 'gwiazdek'}</span>
+                </div>
+                
+                <p className="text-gray-600"><span className="font-medium">Imię:</span> {formData.name || "—"}</p>
+                <p className="text-gray-600"><span className="font-medium">Email:</span> {formData.email || "—"}</p>
+                <p className="text-gray-600"><span className="font-medium">Telefon:</span> {formData.phone || "—"}</p>
+                
+                {formData.feedback && (
+                  <div className="mt-3">
+                    <p className="font-medium text-gray-700">Recenzja:</p>
+                    <p className="text-gray-600 mt-1 italic">{formData.feedback}</p>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          )}
+          
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.9 }}
+            transition={{ delay: 1.1 }}
           >
             <Link 
               to="/"

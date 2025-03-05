@@ -29,11 +29,44 @@ const FeedbackForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    // Prepare data to send
+    const submissionData = {
+      ...formData,
+      rating
+    };
     
-    // Navigate to thank you page
-    navigate("/thank-you");
+    try {
+      // Send form data to webhook
+      const response = await fetch("https://n8n.wczasowa8.pl/webhook/wczasowa8-review", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submissionData),
+      });
+      
+      if (!response.ok) {
+        throw new Error("Failed to submit feedback");
+      }
+      
+      // Show success toast
+      toast.success("Dziękujemy za Twoją opinię!", {
+        duration: 3000,
+      });
+      
+      // Navigate to thank you page with form data
+      navigate("/thank-you", { 
+        state: { 
+          formData: submissionData 
+        } 
+      });
+    } catch (error) {
+      console.error("Error submitting feedback:", error);
+      toast.error("Wystąpił błąd podczas wysyłania opinii. Spróbuj ponownie.", {
+        duration: 3000,
+      });
+      setIsSubmitting(false);
+    }
   };
 
   return (
