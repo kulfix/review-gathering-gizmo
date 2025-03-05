@@ -131,15 +131,24 @@
 }
 
 .submit-button {
-  @apply relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-medium text-hotel-blue transition duration-300 ease-out border-2 border-hotel-blue rounded-md shadow-md group;
+  @apply relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-medium text-hotel-blue transition duration-300 ease-out border-2 border-hotel-blue rounded-md shadow-md;
 }
 
 .submit-button-inner {
-  @apply absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-hotel-blue group-hover:translate-x-0 ease-out;
+  @apply absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-hotel-blue ease-out;
 }
 
 .submit-button-text {
-  @apply relative w-full text-center text-hotel-blue transition-colors duration-300 ease-in-out group-hover:text-white;
+  @apply relative w-full text-center text-hotel-blue transition-colors duration-300 ease-in-out;
+}
+
+/* Group hover effects for submit button */
+.group:hover .submit-button-inner {
+  @apply translate-x-0;
+}
+
+.group:hover .submit-button-text {
+  @apply text-white;
 }
 
 /* Fade in animations for page transitions */
