@@ -17,8 +17,8 @@ const Index = () => {
     
     setTimeout(() => {
       if (rating === 5) {
-        // Redirect to Google Reviews for 5-star ratings
-        window.location.href = "https://g.page/r/CbTwvNvOZ4y0EB0/review";
+        // Updated Google Review URL for 5-star ratings
+        window.location.href = "https://www.google.com/search?hl=pl-PL&gl=pl&q=Wczasowa+8+sarbinowo+noclegi,+Wczasowa+8,+76-034+Sarbinowo&ludocid=15360534187656790610&lsig=AB86z5WT3W4JSXRsiuKiG5rU6oqW#lrd=0x4700302f52966a5f:0xd52b9475c786c252,3";
       } else {
         // For 1-4 stars, go to internal feedback form
         navigate("/feedback", { state: { rating } });
